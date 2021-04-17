@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3>Departement Details</h3>
+
+<div>
+  <p>Abbreviation: <b>{{ departement.abbreviation }}</b></p>
+  <p>English Name: <b>{{ departement.english_name }}</b></p>
+  <p>Arabic Name: <b>{{ departement.arabic_name }}</b></p>
+  <p>Location: <b>{{ departement.location }}</b></p>
+</div>
+
+<!-- Display 'Edit' and 'Delete' buttons -->
+{% if user.is_authenticated and departement.created_by == request.user %}
+<p>
+<a href="{% url 'rcmails:departement_update' departement.pk %}" class="btn btn-outline-dark"> Update </a> 
+<a href="{% url 'rcmails:departement_delete' departement.pk %}" class="btn btn-outline-danger"> Delete </a>
+</p>
+{% endif %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<!-- this partial template will be displayed in bootstrap modal to update an instance -->
+
+<form method="post" action="{% url 'rcmails:departement_update_for_jquery' pk=form.instance.pk %}" id="submit-update-temp" class='uniForm' novalidate>
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Departement</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    {% csrf_token %}
+    {{ form|crispy }}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-success">Edit</button>
+  </div>
+</form>
+

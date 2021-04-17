@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Display list of all cmails -->
+{% for cmail in cmail_list %}
+<div class="card bg-light mb-3" style="max-width: 100%;">
+  <div class="card-header">{{ cmail.number }}</div>
+  <div class="card-body">
+    <!-- Link to display cmails for specific user -->
+    <h4 class="card-title">Created By {{ cmail.created_by.username }} </h4>
+    <a href="{{ cmail.get_absolute_url }}">Details</a>
+  </div>
+</div>
+{% empty %}
+<p>No cmails Yet</p>
+{% endfor %}
+
+
+<!-- Display pagination only if page_obj have some value -->
+{% if page_obj %}
+  {% include "rcmails/cmail/pagination.html" with page=page_obj %}
+{% endif %}
+
+
+{% endblock %}

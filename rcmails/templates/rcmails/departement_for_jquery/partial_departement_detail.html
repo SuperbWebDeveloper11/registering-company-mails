@@ -1,0 +1,17 @@
+
+<!-- this partial template will be displayed in bootstrap modal to display an instance -->
+
+<div class="modal-header">
+  <h4 class="modal-title">Departement Details</h4>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <p>Abbreviation: <b>{{ departement.abbreviation }}</b></p>
+    <p>English Name: <b>{{ departement.english_name }}</b></p>
+    <p>Arabic Name: <b>{{ departement.arabic_name }}</b></p>
+    <p>Location: <b>{{ departement.location }}</b></p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+

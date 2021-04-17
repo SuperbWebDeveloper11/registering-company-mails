@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Display cmail.title and cmail.owner.username -->
+<h2>{{ cmail.number }} </h2>
+
+<p>Title: {{ cmail.title }} </p> 
+<p>Source: {{ cmail.source }} </p> 
+<p>Recieving Date: {{ cmail.recieving_date }} </p> 
+
+<!-- Display 'Edit' and 'Delete' buttons -->
+{% if user.is_authenticated and cmail.created_by == request.user %}
+<p>
+<a href="{% url 'rcmails:cmail_update' cmail.pk %}" class="btn btn-primary"> Update </a> 
+<a href="{% url 'rcmails:cmail_delete' cmail.pk %}" class="btn btn-danger"> Delete </a>
+</p>
+{% endif %}
+
+<hr />
+
+
+{% endblock %}
+

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Display list of all departements -->
+{% for departement in departement_list %}
+<div class="card bg-light mb-3" style="max-width: 100%;">
+  <div class="card-header">{{ departement.abbreviation }}</div>
+  <div class="card-body">
+    <!-- Link to display departements for specific user -->
+    <h4 class="card-title">Created By {{ departement.created_by.username }} </h4>
+    <a href="{{ departement.get_absolute_url }}">Details</a>
+  </div>
+</div>
+{% empty %}
+<p>No departements Yet</p>
+{% endfor %}
+
+
+<!-- Display pagination only if page_obj have some value -->
+{% if page_obj %}
+  {% include "rcmails/departement/pagination.html" with page=page_obj %}
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+
+{% if user.is_authenticated %}
+<button id='fetch-create-temp' 
+        class='btn btn-secondary mb-3' 
+        data-url='{% url 'rcmails:departement_add_for_jquery' %}'>
+  Create
+</button>
+{% endif %}
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Abbreviation</th>
+      <th scope="col">English Name</th>
+      <th scope="col">Arabic Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Detail</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for departement in departement_list %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ departement.abbreviation }}</td>
+      <td>{{ departement.english_name }}</td>
+      <td>{{ departement.arabic_name }}</td>
+      <td>{{ departement.location }}</td>
+      <td id='fetch-detail-temp' data-url='{% url 'rcmails:departement_detail_for_jquery' pk=departement.pk %}'>
+        <button class='btn btn-secondary'>Detail</button>
+      </td>
+      <td id='fetch-update-temp' data-url='{% url 'rcmails:departement_update_for_jquery' pk=departement.pk %}'>
+        <button class='btn btn-info'>Edit</button>
+      </td>
+      <td id='fetch-delete-temp' data-url='{% url 'rcmails:departement_delete_for_jquery' pk=departement.pk %}'>
+        <button class='btn btn-danger'>Delete</button>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan='9'>No cmail Yet</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+

@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<!-- this partial template will be displayed in bootstrap modal to create an instance -->
+
+<form method="post" action="{% url 'rcmails:departement_add_for_jquery' %}" id='submit-create-temp' class='uniForm' novalidate>
+  <div class="modal-header">
+    <h4 class="modal-title">Create Departement</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    {% csrf_token %}
+    {{ form|crispy }}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-success">Create</button>
+  </div>
+</form>
+

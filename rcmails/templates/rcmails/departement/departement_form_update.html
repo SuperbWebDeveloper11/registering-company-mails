@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h3>Update departement</h3>
+
+<form action="{% url 'rcmails:departement_update' departement.id %}" method="post" novalidate enctype="multipart/form-data" class="uniForm">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <br />
+    <p><input type="submit" value="Update" class='btn btn-outline-dark'></p>
+</form>
+
+{% endblock %}
